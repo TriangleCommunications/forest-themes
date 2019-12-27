@@ -9,8 +9,8 @@ const { getAllFiles } = require("./common");
 
 const cwd = process.cwd();
 const outputDir = "dist";
-const semanticUIDir = path.join(cwd, "node_modules/semantic-ui");
-const semanticUIBackupDir = path.join(cwd, "node_modules/semantic-ui-backup");
+const semanticUIDir = path.join(cwd, "node_modules/fomantic-ui");
+const semanticUIBackupDir = path.join(cwd, "node_modules/fomantic-ui-backup");
 
 function ensureDistDir() {
   fse.ensureDirSync(path.join(outputDir, "bootswatch/v3"));
@@ -27,7 +27,7 @@ function getThemeDirInSemanticUISrc(category, theme) {
 }
 
 function backupSemanticUI() {
-  console.log(`backup node_modules/semantic-ui...`);
+  console.log(`backup node_modules/fomantic-ui...`);
   fse.removeSync(semanticUIBackupDir);
   fse.copySync(semanticUIDir, semanticUIBackupDir);
   fse.copySync("semantic.json", path.join(semanticUIDir, "semantic.json"));

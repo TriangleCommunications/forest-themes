@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/semantic-ui-forest/forest-themes#readme",
   "dependencies": {
-    "semantic-ui": "^2.4.2"
+    "fomantic-ui": "^2.8.2"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
