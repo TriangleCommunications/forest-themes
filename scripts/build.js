@@ -13,8 +13,8 @@ const semanticUIDir = path.join(cwd, "node_modules/fomantic-ui");
 const semanticUIBackupDir = path.join(cwd, "node_modules/fomantic-ui-backup");
 
 function ensureDistDir() {
-  fse.ensureDirSync(path.join(outputDir, "bootswatch/v3"));
-  fse.ensureDirSync(path.join(outputDir, "bootswatch/v4"));
+  // fse.ensureDirSync(path.join(outputDir, "bootswatch/v3"));
+  // fse.ensureDirSync(path.join(outputDir, "bootswatch/v4"));
   fse.ensureDirSync(path.join(outputDir, "semantic-ui/v2"));
 }
 
@@ -68,57 +68,57 @@ function toBuildOrNotToBuild(category, theme) {
 
 function build(forceBuild) {
   const semanticUIV2Themes = [
-    "amazon",
+    // "amazon",
     "bootstrap3",
-    "chubby",
-    "flat",
-    "github",
+    // "chubby",
+    // "flat",
+    // "github",
     "material",
-    "twitter"
+    // "twitter"
   ];
 
   const bootswatchV3Themes = [
-    "cerulean",
-    "cosmo",
-    "cyborg",
-    "darkly",
-    "flatly",
+    // "cerulean",
+    // "cosmo",
+    // "cyborg",
+    // "darkly",
+    // "flatly",
     "journal",
     "lumen",
-    "paper",
-    "readable",
-    "sandstone",
-    "simplex",
-    "slate",
-    "solar",
-    "spacelab",
-    "superhero",
-    "united",
-    "yeti"
+    // "paper",
+    // "readable",
+    // "sandstone",
+    // "simplex",
+    // "slate",
+    // "solar",
+    // "spacelab",
+    // "superhero",
+    // "united",
+    // "yeti"
   ];
 
   const bootswatchV4Themes = [
-    "cerulean",
-    "cosmo",
-    "cyborg",
+    // "cerulean",
+    // "cosmo",
+    // "cyborg",
     "darkly",
-    "flatly",
-    "journal",
-    "litera",
-    "lumen",
-    "lux",
-    "materia",
-    "minty",
-    "pulse",
-    "sandstone",
-    "simplex",
-    "sketchy",
-    "slate",
-    "solar",
-    "spacelab",
-    "superhero",
+    // "flatly",
+    // "journal",
+    // "litera",
+    // "lumen",
+    // "lux",
+    // "materia",
+    // "minty",
+    // "pulse",
+    // "sandstone",
+    // "simplex",
+    // "sketchy",
+    // "slate",
+    // "solar",
+    // "spacelab",
+    // "superhero",
     "united",
-    "yeti"
+    // "yeti"
   ];
 
   themes = {
