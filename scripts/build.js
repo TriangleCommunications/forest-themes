@@ -14,20 +14,19 @@ const semanticUIBackupDir = path.join(cwd, "node_modules/fomantic-ui-backup");
 
 function ensureDistDir() {
   // fse.ensureDirSync(path.join(outputDir, "bootswatch/v3"));
-  // fse.ensureDirSync(path.join(outputDir, "bootswatch/v4"));
-  fse.ensureDirSync(path.join(outputDir, "semantic-ui/v2"));
+  // fse.ensureDirSync(path.join(outputDir, "bootswatch"));
+  fse.ensureDirSync(path.join(outputDir, "semantic-ui"));
 }
 
 function getThemeDirInSemanticUISrc(category, theme) {
-  if (category === "semantic-ui/v2") {
+  if (category === "semantic-ui") {
     return theme;
-  } else if (category === "bootswatch/v3" || category === "bootswatch/v4") {
+  } else if (category === "bootswatch") {
     return `${category.replace("/", "-")}-${theme}`;
   }
 }
 
 function backupSemanticUI() {
-  console.log(`backup node_modules/fomantic-ui...`);
   fse.removeSync(semanticUIBackupDir);
   fse.copySync(semanticUIDir, semanticUIBackupDir);
   fse.copySync("semantic.json", path.join(semanticUIDir, "semantic.json"));
@@ -67,7 +66,7 @@ function toBuildOrNotToBuild(category, theme) {
 }
 
 function build(forceBuild) {
-  const semanticUIV2Themes = [
+  const semanticUIThemes = [
     // "amazon",
     "bootstrap3",
     // "chubby",
@@ -83,8 +82,8 @@ function build(forceBuild) {
     // "cyborg",
     // "darkly",
     // "flatly",
-    "journal",
-    "lumen",
+    // "journal",
+    // "lumen",
     // "paper",
     // "readable",
     // "sandstone",
@@ -97,15 +96,15 @@ function build(forceBuild) {
     // "yeti"
   ];
 
-  const bootswatchV4Themes = [
+  const bootswatchThemes = [
     // "cerulean",
     // "cosmo",
     // "cyborg",
     "darkly",
     // "flatly",
-    // "journal",
+    "journal",
     // "litera",
-    // "lumen",
+    "lumen",
     // "lux",
     // "materia",
     // "minty",
@@ -122,12 +121,12 @@ function build(forceBuild) {
   ];
 
   themes = {
-    "bootswatch/v3": bootswatchV3Themes,
-    "bootswatch/v4": bootswatchV4Themes,
-    "semantic-ui/v2": semanticUIV2Themes
+    // "bootswatch": bootswatchV3Themes,
+    "bootswatch": bootswatchThemes,
+    "semantic-ui": semanticUIThemes
   };
 
-  for (let category of ["bootswatch/v3", "bootswatch/v4"]) {
+  for (let category of ["bootswatch"]) {
     for (let theme of themes[category]) {
       fse.copySync(
         path.join("src/themes/", category, theme),
@@ -140,8 +139,8 @@ function build(forceBuild) {
     }
   }
 
-  for (let category of ["bootswatch/v3", "bootswatch/v4", "semantic-ui/v2"]) {
-    if (category === "bootswatch/v3" || category === "bootswatch/v4") {
+  for (let category of ["bootswatch", "semantic-ui"]) {
+    if(category === "bootswatch") {
       // bootswatch themes only need assets from semantic-ui's default theme
       fse.copySync(
         path.join(semanticUIDir, "dist/themes/default"),
@@ -154,7 +153,8 @@ function build(forceBuild) {
       );
     }
 
-    for (let theme of themes[category]) {
+
+    for(let theme of themes[category]) {
       fse.copySync(
         path.join("src/configs", category, `${theme}.theme.config`),
         path.join(semanticUIDir, "src/theme.config")
